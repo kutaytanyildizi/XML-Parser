@@ -39,7 +39,7 @@ private:
 
 XMLParser::XMLParser(const std::string &fileName)
 {
-    if( !doc.load_file(fileName.c_str()) )
+    if(!doc.load_file(fileName.c_str()))
     {
         throw XMLParserException{"File not found!!!"};
     }
@@ -63,8 +63,10 @@ void XMLParser::selectNode(const std::string &searchNode)
 
 void XMLParser::returnParentNode()
 {
-    if( node.parent() )
+    if(node.parent())
+    {
         node = node.parent();
+    }
     else
     {
         throw XMLParserException{"Node doesn't have Parent Node!!!"};
@@ -81,8 +83,10 @@ const std::string XMLParser::get(const Args&... args) const
 template<typename T, typename... Args>
 const std::string XMLParser::get(pugi::xml_node& tempNode, const T& arg, const Args&... args) const 
 {
-    if( tempNode.child(arg) )
+    if(tempNode.child(arg))
+    {
         tempNode = tempNode.child(arg);
+    }
     else
     {
         throw XMLParserException{"Node or Child not found!!!"};
