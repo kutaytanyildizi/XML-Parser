@@ -43,9 +43,10 @@ EmbeddedConfig::~EmbeddedConfig()
 
 EmbeddedConfig* EmbeddedConfig::getInstance()
 {
-    if( embeddedConfig == nullptr ) 
+    if(embeddedConfig == nullptr) 
     {
-        try{
+        try
+        {
             embeddedConfig = new EmbeddedConfig(XMLParser("Config/GTSConfig.xml"));
         }
         catch(std::exception &ex) 
@@ -61,8 +62,8 @@ EmbeddedConfig* EmbeddedConfig::getInstance()
         delete temp;
         return getInstance();
     }
-    return embeddedConfig;
 
+    return embeddedConfig;
 }
 
 #endif // EmbeddedConfig_H
